@@ -1,13 +1,21 @@
 package io.qdriven.github.command;
 
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.json.JSONUtil;
 import io.qdriven.github.GithubBaseCommand;
 import io.qdriven.github.GithubSettings;
+import io.qdriven.github.domain.FollowEntity;
+import io.qdriven.github.domain.GithubRepoEntity;
 import io.qdriven.github.exception.GithubConnectException;
 import lombok.extern.log4j.Log4j2;
+import org.kohsuke.github.GHPersonSet;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GHUser;
+import org.kohsuke.github.PagedIterable;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +52,11 @@ public class GithubUserCommand extends GithubBaseCommand {
         }
     }
 
+    /**
+     * Delete Repo Name, like Repo name
+     *
+     * @param repoName
+     */
     public void deleteRepos(String repoName) {
 
         Map<String, GHRepository> result = null;
@@ -78,4 +91,46 @@ public class GithubUserCommand extends GithubBaseCommand {
     }
 
     //other status for github status
+    public GHPersonSet<GHUser> getFollows() {
+        try {
+            return getGithubUser().getFollows();
+        } catch (IOException e) {
+            log.error("get follows failed,e={}", e);
+            throw new GithubConnectException("get follows failed");
+        }
+    }
+
+    public void saveFollowsToFile(String filePath) {
+
+        GHPersonSet<GHUser> follows = getFollows();
+        List<FollowEntity> followEntities = new ArrayList<>();
+        for (GHUser follow : follows) {
+            FollowEntity entity = new FollowEntity();
+            entity.setApiUrl(follow.getUrl().toString());
+            entity.setHtmlUrl(follow.getHtmlUrl().toString());
+            entity.setLogin(follow.getLogin());
+            followEntities.add(entity);
+        }
+        FileUtil.writeString(
+                JSONUtil.toJsonStr(followEntities),
+                new File(filePath), Charset.defaultCharset());
+    }
+
+    public PagedIterable<GHRepository> getStarredRepositories() {
+        return getGithubUser().listStarredRepositories();
+    }
+
+    public void saveStarredRepositories(String filePath) {
+        PagedIterable<GHRepository> repos = getGithubUser().listStarredRepositories();
+        List<GithubRepoEntity> repoEntities = new ArrayList<>();
+        for (GHRepository repo : repos) {
+            GithubRepoEntity entity = new GithubRepoEntity();
+            entity.setName(repo.getName());
+            entity.setRepoUrl(repo.getHttpTransportUrl());
+            repoEntities.add(entity);
+        }
+        FileUtil.writeString(
+                JSONUtil.toJsonStr(repoEntities),
+                new File(filePath), Charset.defaultCharset());
+    }
 }

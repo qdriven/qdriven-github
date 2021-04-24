@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Patrick
  **/
 class GithubUserCommandTest {
+    GithubUserCommand command = new GithubUserCommand();
 
     @Test
     void createRepo() {
@@ -19,7 +20,6 @@ class GithubUserCommandTest {
 
     @Test
     void deleteRepos() {
-        GithubUserCommand command = new GithubUserCommand();
         command.deleteRepos("qaops-assets");
         command.deleteRepos("WeBASE-Oracle");
         command.deleteRepos("qdriven-github");
@@ -27,5 +27,13 @@ class GithubUserCommandTest {
 
     @Test
     void searchRepo() {
+    }
+    @Test
+    void testSaveFollows(){
+        command.saveFollowsToFile("follows.json");
+    }
+    @Test
+    void testSaveStarredRepo(){
+        command.saveStarredRepositories("stars.json");
     }
 }
