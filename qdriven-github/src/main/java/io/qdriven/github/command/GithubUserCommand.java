@@ -19,6 +19,9 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * @author Patrick
@@ -52,28 +55,40 @@ public class GithubUserCommand extends GithubBaseCommand {
         }
     }
 
+    public void deleteReposBy(Predicate<Map.Entry<String, GHRepository>> predicate) {
+        Map<String, GHRepository> result = null;
+        try {
+            result = getGithubUser().getRepositories();
+            result.entrySet().forEach(
+                    entry -> {
+                        if (predicate.test(entry)) {
+                            try {
+                                entry.getValue().delete();
+                            } catch (IOException e) {
+                                throw new GithubConnectException("delete repos failed,err={}", e);
+                            }
+                        }
+                    }
+            );
+        } catch (IOException e) {
+            throw new GithubConnectException("delete repos failed,err={}", e);
+        }
+    }
+
     /**
      * Delete Repo Name, like Repo name
      *
      * @param repoName
      */
     public void deleteRepos(String repoName) {
-
-        Map<String, GHRepository> result = null;
-        try {
-            result = getGithubUser().getRepositories();
-            for (Map.Entry<String, GHRepository> entry : result.entrySet()) {
-                if (entry.getKey().toLowerCase().contains(repoName.toLowerCase())) {
-                    System.out.println(entry.getValue());
-                    entry.getValue().delete();
-                }
-
-            }
-        } catch (IOException e) {
-            throw new GithubConnectException("delete repos failed,err={}", e);
-        }
+        deleteReposBy( entry -> entry.getKey().toLowerCase().contains(repoName.toLowerCase()));
     }
 
+    /**
+     * Search Repo
+     * @param repo
+     * @return
+     */
     public List<GHRepository> searchRepo(String repo) {
         List<GHRepository> repos = new ArrayList<>();
         try {

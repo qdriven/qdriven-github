@@ -27,6 +27,8 @@ I came up with simple idea to make github integration a little easy.
         command.deleteRepos("qaops-assets");
         command.deleteRepos("WeBASE-Oracle");
         command.deleteRepos("WeCross");
+        command.deleteReposBy(entry -> entry.getValue().isFork());
+
 ```
 
 ### Get Stars and Followings throw command

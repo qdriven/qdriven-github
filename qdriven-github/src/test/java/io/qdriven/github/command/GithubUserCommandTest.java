@@ -1,6 +1,10 @@
 package io.qdriven.github.command;
 
 import org.junit.jupiter.api.Test;
+import org.kohsuke.github.GHRepository;
+
+import java.util.Map;
+import java.util.function.Predicate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,9 +24,10 @@ class GithubUserCommandTest {
 
     @Test
     void deleteRepos() {
-        command.deleteRepos("qaops-assets");
-        command.deleteRepos("WeBASE-Oracle");
-        command.deleteRepos("qdriven-github");
+//        command.deleteRepos("qaops-assets");
+//        command.deleteRepos("WeBASE-Oracle");
+//        command.deleteRepos("qdriven-github");
+        command.deleteReposBy(entry -> entry.getValue().isFork());
     }
 
     @Test
