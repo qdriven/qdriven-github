@@ -19,7 +19,7 @@ class GithubRepoCommandTest {
 
     @Test
     void testGetRepoByUrl() throws IOException {
-        GHRepository repository = command.getRepoByUrl("https://github.com/qdriven/tester-radar.git");
+        GHRepository repository = command.getRepoByUrl("https://github.com/QuantConnect/Lean.git");
         GithubRepoEntity entity = GithubRepoEntity.toRepoEntity(repository);
         System.out.println(entity);
         YamlMapping entityYamlMapping = Yaml.createYamlDump(

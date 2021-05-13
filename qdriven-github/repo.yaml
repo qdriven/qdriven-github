@@ -1,14 +1,29 @@
-name: "tester-radar"
-stars: 2
-repoUrl: "https://github.com/qdriven/tester-radar.git"
+name: Lean
+toString: "GithubRepoEntity(repoUrl=https://github.com/QuantConnect/Lean.git, name=Lean, stars=4958, topics=[c-sharp, algorithmic-trading-engine, quantconnect, lean-engine, finance, algorithm, options, trading-algorithms, trading-platform, trading-strategies, trading-bot, python, stock-indicators, forex], languages=[Shell, C#, Jupyter Notebook, Python, Dockerfile, HTML, Batchfile, CSS])"
+hashCode: "-2135220123"
+stars: 4958
+repoUrl: "https://github.com/QuantConnect/Lean.git"
 topics:
-  - "test-radar"
-  - "awesome-tester"
+  - "c-sharp"
+  - "algorithmic-trading-engine"
+  - quantconnect
+  - "lean-engine"
+  - finance
+  - algorithm
+  - options
+  - "trading-algorithms"
+  - "trading-platform"
+  - "trading-strategies"
+  - "trading-bot"
+  - python
+  - "stock-indicators"
+  - forex
 languages:
-  - Java
-  - Dockerfile
   - Shell
-  - CSS
-  - JavaScript
-  - HTML
+  - "C#"
+  - Jupyter Notebook
   - Python
+  - Dockerfile
+  - HTML
+  - Batchfile
+  - CSS

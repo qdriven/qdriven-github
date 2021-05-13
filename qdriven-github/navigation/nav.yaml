@@ -1,15 +1,28 @@
 repos:
-  - name: "tester-radar"
-    stars: 2
-    repoUrl: "https://github.com/qdriven/tester-radar.git"
+  - name: Lean
+    stars: 4958
+    repoUrl: "https://github.com/QuantConnect/Lean.git"
     topics:
-      - "test-radar"
-      - "awesome-tester"
+      - "c-sharp"
+      - "algorithmic-trading-engine"
+      - quantconnect
+      - "lean-engine"
+      - finance
+      - algorithm
+      - options
+      - "trading-algorithms"
+      - "trading-platform"
+      - "trading-strategies"
+      - "trading-bot"
+      - python
+      - "stock-indicators"
+      - forex
     languages:
-      - Java
+      - "C#"
       - Dockerfile
       - Shell
       - CSS
-      - JavaScript
+      - Batchfile
       - HTML
+      - Jupyter Notebook
       - Python

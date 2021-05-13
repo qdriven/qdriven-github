@@ -7,6 +7,8 @@ import org.kohsuke.github.GHRepository;
 import java.io.IOException;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author Patrick
@@ -17,10 +19,10 @@ public class GithubRepoEntity {
     private String name;
     private int stars;
     private List<String> topics;
-//    private List<String> tags;
+    //    private List<String> tags;
     private Set<String> languages;
 
-    public static GithubRepoEntity toRepoEntity(GHRepository repository){
+    public static GithubRepoEntity toRepoEntity(GHRepository repository) {
         try {
             GithubRepoEntity entity = new GithubRepoEntity();
             entity.setRepoUrl(repository.getHttpTransportUrl());
