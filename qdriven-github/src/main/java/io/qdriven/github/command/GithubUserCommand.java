@@ -19,8 +19,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Predicate;
 
 /**
@@ -29,9 +27,9 @@ import java.util.function.Predicate;
 @Log4j2
 public class GithubUserCommand extends GithubBaseCommand {
 
-    public GithubUserCommand() {
-        super();
-    }
+//    public GithubUserCommand() {
+//        super();
+//    }
 
     /**
      * Create Repository

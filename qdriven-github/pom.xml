@@ -47,7 +47,11 @@
             <artifactId>github-api</artifactId>
             <version>1.127</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.amihaiemil.web</groupId>
+            <artifactId>eo-yaml</artifactId>
+            <version>5.1.9</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

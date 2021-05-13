@@ -5,7 +5,6 @@ import lombok.extern.log4j.Log4j2;
 import org.kohsuke.github.GHUser;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
-
 import java.io.IOException;
 
 /**
@@ -42,7 +41,7 @@ public class GithubBaseCommand {
         return github;
     }
 
-    public GHUser getGithubUser(){
+    public GHUser getGithubUser() {
         try {
             return getGithub().getUser(GithubSettings.getUser());
         } catch (IOException e) {
