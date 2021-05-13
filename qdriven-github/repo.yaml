@@ -1,6 +1,4 @@
 name: "tester-radar"
-toString: "GithubRepoEntity(repoUrl=https://github.com/qdriven/tester-radar.git, name=tester-radar, stars=2, topics=[test-radar, awesome-tester], languages=[Java, Dockerfile, Shell, CSS, JavaScript, HTML, Python])"
-hashCode: 1603906447
 stars: 2
 repoUrl: "https://github.com/qdriven/tester-radar.git"
 topics:

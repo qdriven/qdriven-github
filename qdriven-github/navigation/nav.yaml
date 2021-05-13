@@ -1,0 +1,15 @@
+repos:
+  - name: "tester-radar"
+    stars: 2
+    repoUrl: "https://github.com/qdriven/tester-radar.git"
+    topics:
+      - "test-radar"
+      - "awesome-tester"
+    languages:
+      - Java
+      - Dockerfile
+      - Shell
+      - CSS
+      - JavaScript
+      - HTML
+      - Python
