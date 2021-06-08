@@ -19,7 +19,7 @@ repos:
       - forex
     languages:
       - "C#"
-      - Dockerfile
+      - "Dockerfile"
       - Shell
       - CSS
       - Batchfile
